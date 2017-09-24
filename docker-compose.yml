@@ -26,4 +26,4 @@ services:
     command:
     - bash
     - -c
-    - nginx & sleep "$${RANDOM:0:3}"
+    - nginx & sleep "$${RANDOM:0:4}"
