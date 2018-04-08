@@ -16,7 +16,6 @@ services:
     - bash
     - -c
     - while true ; do curl web-endpoint/name.html ; sleep 1 ; done
-    labels:
   web:
     image: sangeetha/testnewhostrouting
     stdin_open: true
