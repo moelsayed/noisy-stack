@@ -2,10 +2,9 @@ version: '2'
 services:
   web-lb:
     image: rancher/lb-service-haproxy:v0.7.5
-    ports:
+    expose:
     - 80:80/tcp
     labels:
-      io.rancher.container.agent.role: environmentAdmin
       io.rancher.container.create_agent: 'true'
   load-generator:
     image: tutum/curl
@@ -18,7 +17,6 @@ services:
     - -c
     - while true ; do curl web-endpoint/name.html ; sleep 1 ; done
     labels:
-      io.rancher.scheduler.global: 'true'
   web:
     image: sangeetha/testnewhostrouting
     stdin_open: true
@@ -26,4 +24,4 @@ services:
     command:
     - bash
     - -c
-    - nginx & sleep "$${RANDOM:0:4}"
+    - nginx & sleep "$${RANDOM:0:6}"
